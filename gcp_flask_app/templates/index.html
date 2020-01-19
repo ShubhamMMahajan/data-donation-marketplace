@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>First Flask App</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
- </head>
+ </head>-->
  <!--<script>function myFunction() {
 		var text1= $('#blockstack_id').val();
 		var text2= $('#').val();
@@ -24,10 +25,42 @@
             });
 };  </script> -->
 
-<body>
-    {% for listing in ids %}
-    <p> {{ listing['blockstack_id'] }} </p>
-    {% endfor %}
 
-</body>
-</html>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+	<section id="team" class="pb-5">
+	    <div class="container">
+	        <h1 class="section-title h1">Available Data</h1>
+	        <div class="row">
+	        	
+	            {% for listing in ids %}
+	            <div class="col-xs-12 col-sm-6 col-md-4"> 
+	                <div class="card">
+	                    <div class="card-body text-center">
+	                        <p><img class=" img-fluid" src="{{ url_for('static', filename='generic_picture.png') }}"" alt="card image"></p>
+	                        <h4 class="card-title">{{listing['name']}}</h4>
+	                        <p class="card-text">{{listing['about']}}</p>
+	                        <!--<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>-->
+	                        <input type="checkbox" class="data_source" name="data_source" value={{listing['blockstack_id']}}>
+	                    </div>
+	                </div>   
+	            </div>
+	            {% endfor %}
+	        </div>
+	    </div>
+	</section>
+	<input type="button" onclick='printChecked()' value="Print Selected Items"/>
+	<script type="text/javascript">
+	function printChecked(){
+		var items=document.getElementsByName('data_source');
+		var selectedItems="";
+		for(var i=0; i<items.length; i++){
+			if(items[i].type=='checkbox' && items[i].checked==true)
+				selectedItems+=items[i].value+"\n";
+		}
+		alert(selectedItems);
+	}			
+</script>
+    
+
+<!--</body>
+</html>-->

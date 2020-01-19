@@ -33,11 +33,8 @@ section .section-title {
 #team .card {
     border: none;
     background: #ffffff;
-    text-align: center;
 }
-#team .card:focus {
-    outline: 1px solid blue;
-}
+
 .image-flip:hover .backside,
 .image-flip.hover .backside {
     -webkit-transform: rotateY(0deg);
