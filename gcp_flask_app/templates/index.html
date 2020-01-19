@@ -24,32 +24,65 @@
                 document.write(html)
             });
 };  </script> -->
+<body>
 
+    
 
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+
 	<section id="team" class="pb-5">
-	    <div class="container">
-	        <h1 class="section-title h1">Available Data</h1>
+	    <div class="container" style="text-align:center";>
+	        <h1 style="font-size:40px" class="section-title h1">Available Data</h1>
 	        <div class="row">
 	        	
 	            {% for listing in ids %}
-	            <div class="col-xs-12 col-sm-6 col-md-4"> 
-	                <div class="card">
-	                    <div class="card-body text-center">
-	                        <p><img class=" img-fluid" src="{{ url_for('static', filename='generic_picture.png') }}"" alt="card image"></p>
-	                        <h4 class="card-title">{{listing['name']}}</h4>
-	                        <p class="card-text">{{listing['about']}}</p>
-	                        <!--<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>-->
-	                        <input type="checkbox" class="data_source" name="data_source" value={{listing['blockstack_id']}}>
-	                    </div>
-	                </div>   
-	            </div>
+	            
+		
+				<label for="cb">
+					<div class="my-2 mx-auto p-relative bg-white shadow-1 blue-hover" style="width: 360px; overflow: hidden; border-radius: 1px; display: inline-block; padding: 30px 30px 30px 30px">
+				        <!--<img src="{{ url_for('static', filename='generic_picture.png') }}" alt="Man with backpack"    
+				            class="d-block w-full">-->
+
+				  <div class="px-2 py-2">
+				    <!--<p class="mb-0 small font-weight-medium text-uppercase mb-1 text-muted lts-2px">
+				      Travel
+				    </p>-->
+
+				    <h1 class="ff-serif font-weight-normal text-black card-heading mt-0 mb-1" style="line-height: 1.25;">
+				      {{listing['name']}}
+				    </h1>
+
+				    <p class="mb-1">
+				      {{listing['about']}}
+				    </p>
+
+				  </div>
+
+				  <input type="checkbox", id="data_source", name="data_source", value={{listing['blockstack_id']}}>
+				  </a>
+
+				       
+
+				</div>
+			</label>
+				
 	            {% endfor %}
 	        </div>
 	    </div>
 	</section>
-	<input type="button" onclick='printChecked()' value="Print Selected Items"/>
+	
+  
+	<!--<input type="button" class="brk-btn" onclick='printChecked()' value="Print Selected Items"/>-->
+	<div class="box", align="center"> 
+ 		 <button class="btn btn-white btn-animation-1" onclick='printChecked()' value="Print Selected Items">Buy</button>
+ 		</div>
+ 	<script src="jquery-3.4.1.min.js">$('input[type=checkbox]').change(function(){
+    var el = $(this).closest('label').toggleClass('data');
+}); </script>
 	<script type="text/javascript">
+
+	
+	
 	function printChecked(){
 		var items=document.getElementsByName('data_source');
 		var selectedItems="";
@@ -61,6 +94,6 @@
 	}			
 </script>
     
-
+</body>
 <!--</body>
 </html>-->
