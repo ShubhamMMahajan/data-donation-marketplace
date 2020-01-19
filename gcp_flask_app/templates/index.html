@@ -74,7 +74,7 @@
   
 	<!--<input type="button" class="brk-btn" onclick='printChecked()' value="Print Selected Items"/>-->
 	<div class="box", align="center"> 
- 		 <button class="btn btn-white btn-animation-1" onclick='printChecked()' value="Print Selected Items">Buy</button>
+ 		 <button class="btn btn-white btn-animation-1" onclick='printDatabase()' value="Print Selected Items">Buy</button>
  		</div>
  	<script src="jquery-3.4.1.min.js">$('input[type=checkbox]').change(function(){
     var el = $(this).closest('label').toggleClass('data');
@@ -91,7 +91,16 @@
 				selectedItems+=items[i].value+"\n";
 		}
 		alert(selectedItems);
-	}			
+	}	
+	function printDatabase(){
+		/*var MongoClient = require('mongodb').MongoClient
+  							, assert = require('assert');
+  		var url = "mongodb://dbadmin:secretpass@35.185.249.125:27017/yee";
+  		MongoClient.connect(url, function(err, db) {
+  		if(err) { return alert(err); }
+  		db.close();*/
+  	}
+	}		
 </script>
     
 </body>

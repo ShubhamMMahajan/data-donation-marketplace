@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template,jsonify
 import json
+from pymongo import MongoClient
 app = Flask(__name__)
 listings = []
 constant_price = 5
@@ -11,6 +12,20 @@ def add_listing(blockstack_id, name, about):
     new_listing['about'] = about
     new_listing['name'] = name
     listings.append(new_listing)
+
+@app.route('/get_mongo')
+def access_mongo_data():
+    client = MongoClient('mongodb://35.185.249.125:27017/')
+    db = client['yee']
+    print("Connected to db")
+    collection = db['radiks-server-data']
+    print("Connected to collection")
+    print(str(collection))
+    print(str(collection.count_documents({})))
+    print(str(collection.find()))
+    return str(collection.find())
+    #for post in collection.find():
+    #    print(post)
 
 @app.route('/get_data', methods=['PUT'])
 def create_task():
