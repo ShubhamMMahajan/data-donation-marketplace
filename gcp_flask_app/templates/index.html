@@ -5,9 +5,9 @@
     <title>First Flask App</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
  </head>
- <script>function myFunction() {
-		var text1= $('#text1').val();
-		var text2= $('#text2').val();
+ <!--<script>function myFunction() {
+		var text1= $('#blockstack_id').val();
+		var text2= $('#').val();
 		  $.ajax({
               url: "/join",
               type: "POST",
@@ -22,13 +22,12 @@
                 html +="<br>";
                 document.write(html)
             });
-};  </script>
+};  </script> -->
+
 <body>
-    <p>
-        Taking input from web<br><br>            Text_Value1<input type="text" id="text1" name="text1"><br><br>
-            Text_Value2<input type="text" id="text2" name="text2"><br><br>
-            <button id="clicked" onclick="myFunction()">Submit</button>
-        </p>
-    <div class="show-data" >    </div>
+    {% for listing in ids %}
+    <p> {{ listing['blockstack_id'] }} </p>
+    {% endfor %}
+
 </body>
 </html>
